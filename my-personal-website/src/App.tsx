@@ -8,12 +8,11 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
-import { Provider } from "./components/ui/provider";
-import { Box } from '@chakra-ui/react';
+import { Box, ChakraProvider } from '@chakra-ui/react';
 
 const App: React.FC = () => {
   return (
-    <Provider>
+    <ChakraProvider>
       <Box
         display="flex"
         flexDirection="column"
@@ -34,7 +33,7 @@ const App: React.FC = () => {
           <Footer />
         </Router>
       </Box>
-    </Provider>
+    </ChakraProvider>
   );
 };
 
