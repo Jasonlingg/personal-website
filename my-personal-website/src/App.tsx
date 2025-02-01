@@ -16,7 +16,7 @@ const App: React.FC = () => {
       <Box
         display="flex"
         flexDirection="column"
-        minHeight="100vh" // Ensures full-height layout
+        minHeight="100vh"  // Ensures full-height layout
       >
         <Router>
           <Header />
@@ -30,7 +30,6 @@ const App: React.FC = () => {
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </Box>
-          <Footer />
         </Router>
       </Box>
     </ChakraProvider>
