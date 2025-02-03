@@ -1,35 +1,78 @@
-import React from "react";
-import {
-    Box,
-    VStack,
-    Heading,
-    Text,
-    HStack,
-    Link,
-    Flex,
-    Icon,
-} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { Box, VStack, Text, Flex } from "@chakra-ui/react";
 import Lottie from "lottie-react";
-import animationData from "../animations/homepage.json";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import animationData from "../animations/homepage.json"; // Your main animation data
+import background from "../animations/background.json"; // Your background animation
 import Typewriter from "react-typewriter-effect";
+import Footer from "./Footer";
 
 const Home: React.FC = () => {
+    const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
+    const [showBackground, setShowBackground] = useState(window.innerWidth > 768); // Hide background on small screens
+
+    useEffect(() => {
+        const handleResize = () => {
+            const newSize = { width: window.innerWidth, height: window.innerHeight };
+            setWindowSize(newSize);
+            setShowBackground(newSize.width > 768); // Show only if width is greater than 768px
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <Box
-            flex="1"
             display="flex"
-            alignItems="center"
-            justifyContent="center"
-            bg="gray.50"
-            px={4}
+            flexDirection="column"
+            minHeight="100vh"  // Ensures full-height layout, including footer
+            position="relative"
+            overflow="hidden" // Prevent scrolling beyond the viewport
         >
-            <VStack gap={8} textAlign="center">
-                {/* Animation */}
+            {/* Lottie Animation as Background */}
+            {showBackground && (
                 <Box
-                    animation="pulse 5s infinite"
-                    style={{ width: "100%", maxWidth: "400px" }}
+                    position="absolute"
+                    top="0"
+                    left="0"
+                    width="100vw"
+                    height="100vh"
+                    zIndex="-1"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
                 >
+                    <Lottie
+                        animationData={background}
+                        loop
+                        autoplay
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover", // Ensures it covers the whole screen
+                            objectPosition: "center",
+                            transform: "scale(1.5)", // Zoom in to cover the entire background
+                            opacity: 0.3, // Adjust this value to control the opacity
+
+                        }}
+                    />
+                </Box>
+            )}
+
+
+
+
+            {/* Main Content */}
+            <VStack
+                gap={8}
+                textAlign="center"
+                zIndex="1"
+                flex="1"
+                justifyContent="center"
+                padding={{ base: 4, md: 8 }} // Add padding to avoid content touching edges on mobile
+            >
+                {/* Animation */}
+                <Box animation="pulse 5s infinite" style={{ width: "100%", maxWidth: "400px" }}>
                     <Lottie animationData={animationData} loop autoplay />
                 </Box>
 
@@ -41,16 +84,16 @@ const Home: React.FC = () => {
                     wrap="nowrap"
                     gap={2}
                     fontSize={{ base: "3xl", md: "5xl" }}
-                    fontWeight="extrabold"
+                    fontWeight="bold"
                     textShadow="0 2px 4px rgba(0, 0, 0, 0.2)"
                     _hover={{ transform: "scale(1.05)", transition: "0.3s ease-in-out" }}
                 >
-                    <Text as="span">Hi, I'm</Text>
+                    <Text as="span" color="gray.600"
+                    >Hi, I'm</Text>
                     <Text
                         as="span"
                         color="blue.400"
                         display="inline"
-
                         _hover={{ color: "blue.500", transition: "color 0.3s" }}
                     >
                         <Typewriter
@@ -60,7 +103,7 @@ const Home: React.FC = () => {
                                 color: "inherit",
                             }}
                             startDelay={100}
-                            cursorColor="blue"
+                            cursorColor="gray"
                             multiText={[
                                 "Jason.",
                                 "an aspiring engineer.",
@@ -86,25 +129,9 @@ const Home: React.FC = () => {
                     on creating intuitive and impactful digital experiences. Explore my
                     projects, skills, and more!
                 </Text>
-
-                {/* Links Section */}
-                <HStack gap={6} mt={{ base: 2, md: 0 }}>
-                    <Link
-                        href="https://www.linkedin.com/in/jason-lingg/"
-                        aria-label="LinkedIn"
-                        _hover={{ transform: "scale(1.2)", transition: "0.3s ease-in-out" }}
-                    >
-                        <Icon as={FaLinkedin} boxSize={10} color="gray.400" _hover={{ color: "blue.400" }} />
-                    </Link>
-                    <Link
-                        href="https://github.com/your-username"
-                        aria-label="GitHub"
-                        _hover={{ transform: "scale(1.2)", transition: "0.3s ease-in-out" }}
-                    >
-                        <Icon as={FaGithub} boxSize={10} color="gray.400" _hover={{ color: "blue.400" }} />
-                    </Link>
-                </HStack>
             </VStack>
+
+            <Footer />
         </Box>
     );
 };
