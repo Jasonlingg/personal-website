@@ -23,10 +23,10 @@ const App: React.FC = () => {
           <Box flex="1" display="flex" flexDirection="column"> {/* Stretch main content */}
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
+              {/* <Route path="/about" element={<About />} /> */}
               <Route path="/skills" element={<Skills />} />
               <Route path="/experience" element={<Experience />} />
-              <Route path="/education" element={<Education />} />
+              {/* <Route path="/education" element={<Education />} /> */}
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </Box>
