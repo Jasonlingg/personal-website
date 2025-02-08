@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Box, ChakraProvider } from '@chakra-ui/react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
@@ -8,29 +8,44 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
-import { Box, ChakraProvider } from '@chakra-ui/react';
 
 const App: React.FC = () => {
   return (
     <ChakraProvider>
-      <Box
-        display="flex"
-        flexDirection="column"
-        minHeight="100vh"  // Ensures full-height layout
-      >
-        <Router>
-          <Header />
-          <Box flex="1" display="flex" flexDirection="column"> {/* Stretch main content */}
-            <Routes>
-              <Route path="/" element={<Home />} />
-              {/* <Route path="/about" element={<About />} /> */}
-              <Route path="/skills" element={<Skills />} />
-              <Route path="/experience" element={<Experience />} />
-              {/* <Route path="/education" element={<Education />} /> */}
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </Box>
-        </Router>
+      {/* Enables smooth scrolling */}
+      <style>
+        {`html { scroll-behavior: smooth; }`}
+      </style>
+
+      <Box>
+        <Header />
+
+        {/* Sections with IDs for scrolling */}
+        <Box as="section" id="home">
+          <Home />
+        </Box>
+
+        {/* <Box as="section" id="about">
+          <About />
+        </Box> */}
+
+        <Box as="section" id="skills">
+          <Skills />
+        </Box>
+
+        <Box as="section" id="experience">
+          <Experience />
+        </Box>
+
+        {/* <Box as="section" id="education">
+          <Education />
+        </Box> */}
+
+        <Box as="section" id="contact">
+          <Contact />
+        </Box>
+
+        <Footer />
       </Box>
     </ChakraProvider>
   );
