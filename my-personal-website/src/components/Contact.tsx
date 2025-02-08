@@ -1,43 +1,124 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Box, Input, Textarea, Button, VStack, FormControl, FormLabel, Heading, Text, Icon } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import { FiMail, FiGithub, FiLinkedin } from 'react-icons/fi';
+import React from 'react';
+import Footer from './Footer';
+import Lottie from 'lottie-react';
+import bottom from '../animations/bottom.json';
+import emailjs from 'emailjs-com';
 
-const Contact: React.FC = () => {
+const MotionBox = motion(Box);
+
+const Contact = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle form submission logic here
-        console.log('Form submitted:', { name, email, message });
+        if (!name || !email || !message) {
+            setError('All fields are required.');
+            setSuccess('');
+            return;
+        }
+        setError('');
+
+        const templateParams = {
+            name,
+            email,
+            message,
+        };
+
+        emailjs.send('service_d2fodwn', 'template_0ln7m3i', templateParams, '3tT5z4LBG-D8lzWcv')
+            .then((response) => {
+                console.log('Email sent successfully:', response.status, response.text);
+                setSuccess('Message sent successfully!');
+                setName('');
+                setEmail('');
+                setMessage('');
+            }, (error) => {
+                console.error('Failed to send email:', error);
+                setError('Failed to send message. Please try again later.');
+                setSuccess('');
+            });
     };
 
     return (
-        <div className="contact">
-            <h2>Contact Me</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Name"
-                    required
-                />
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                    required
-                />
-                <textarea
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Message"
-                    required
-                ></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </div>
+        <Box minH="100vh" display="flex" alignItems="center" justifyContent="center" px={4} bg="blue.500" position="relative">
+            <Box
+                position="absolute"
+                top="-10"
+                left="0"
+                width="100vw"
+                zIndex="1"
+                transform="scaleY(-1)" // Flips the animation over the X-axis
+            >
+                <Lottie animationData={bottom} loop autoplay />
+            </Box>
+            <MotionBox
+                bg="white"
+                p={8}
+                borderRadius="lg"
+                boxShadow="lg"
+                maxW="500px"
+                w="full"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                zIndex={2}
+            >
+                <Heading size="lg" textAlign="center" mb={4} color="blue.600">
+                    Contact Me
+                </Heading>
+                <Text textAlign="center" mb={6} color="gray.600">
+                    Let’s connect! Feel free to reach out via the form below.
+                </Text>
+
+                <VStack spacing={4} as="form" onSubmit={handleSubmit}>
+                    <FormControl>
+                        <FormLabel>Name</FormLabel>
+                        <Input
+                            type="text"
+                            placeholder="Your Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            focusBorderColor="blue.400"
+                        />
+                    </FormControl>
+
+                    <FormControl>
+                        <FormLabel>Email</FormLabel>
+                        <Input
+                            type="email"
+                            placeholder="Your Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            focusBorderColor="blue.400"
+                        />
+                    </FormControl>
+
+                    <FormControl>
+                        <FormLabel>Message</FormLabel>
+                        <Textarea
+                            placeholder="Your Message"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            focusBorderColor="blue.400"
+                        />
+                    </FormControl>
+
+                    {error && <Text color="red.500">{error}</Text>}
+                    {success && <Text color="green.500">{success}</Text>}
+
+                    <Button colorScheme="blue" type="submit" w="full">
+                        Send Message
+                    </Button>
+                </VStack>
+            </MotionBox>
+        </Box>
     );
 };
 
