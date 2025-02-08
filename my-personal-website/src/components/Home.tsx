@@ -1,137 +1,141 @@
-import React, { useEffect, useState } from "react";
-import { Box, VStack, Text, Flex } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { Box, VStack, Text, Flex, Link, HStack } from "@chakra-ui/react";
 import Lottie from "lottie-react";
-import animationData from "../animations/homepage.json"; // Your main animation data
-import background from "../animations/background.json"; // Your background animation
+import { motion } from "framer-motion";
+import animationData from "../animations/homepage.json";
+import bottom from "../animations/bottom.json";
+import arrow from "../animations/arrow.json";
+import { FaGithub, FaTwitter, FaLinkedin, FaYoutube, FaBlog } from "react-icons/fa";
 import Typewriter from "react-typewriter-effect";
-import Footer from "./Footer";
+
+// Motion Animations
+const fadeInVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } },
+};
+
+const slideInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1.2, ease: "easeOut" } },
+};
+
+const slideInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1.2, ease: "easeOut" } },
+};
+
+const bounceAnimation = {
+    animate: {
+        y: [0, 15, 0],
+        transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+    },
+};
 
 const Home: React.FC = () => {
-    const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
-    const [showBackground, setShowBackground] = useState(window.innerWidth > 768); // Hide background on small screens
-
     useEffect(() => {
-        const handleResize = () => {
-            const newSize = { width: window.innerWidth, height: window.innerHeight };
-            setWindowSize(newSize);
-            setShowBackground(newSize.width > 768); // Show only if width is greater than 768px
-        };
-
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+        document.body.style.overflowX = "hidden"; // Prevent horizontal scroll issues
     }, []);
 
     return (
-        <Box
-            display="flex"
-            flexDirection="column"
-            minHeight="100vh"  // Ensures full-height layout, including footer
-            position="relative"
-            overflow="hidden" // Prevent scrolling beyond the viewport
-        >
-            {/* Lottie Animation as Background */}
-            {showBackground && (
-                <Box
-                    position="absolute"
-                    top="0"
-                    left="0"
-                    width="100vw"
-                    height="100vh"
-                    zIndex="-1"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                >
-                    <Lottie
-                        animationData={background}
-                        loop
-                        autoplay
-                        style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover", // Ensures it covers the whole screen
-                            objectPosition: "center",
-                            transform: "scale(1.5)", // Zoom in to cover the entire background
-                            opacity: 0.3, // Adjust this value to control the opacity
-
-                        }}
-                    />
-                </Box>
-            )}
-
-
-
+        <Box position="relative" minHeight="100vh" bg="blue.500" color="white">
+            {/* Social Media Icons */}
+            <HStack justifyContent="center" spacing={6} pt={4}>
+                <Link href="#"><FaGithub size={24} /></Link>
+                <Link href="#"><FaLinkedin size={24} /></Link>
+            </HStack>
 
             {/* Main Content */}
-            <VStack
-                gap={8}
-                textAlign="center"
-                zIndex="1"
-                flex="1"
-                justifyContent="center"
-                padding={{ base: 4, md: 8 }} // Add padding to avoid content touching edges on mobile
+            <Flex
+                direction={{ base: "column", md: "row" }}
+                align="center"
+                justify="center"
+                minHeight="80vh"
+                px={10}
+                textAlign={{ base: "center", md: "left" }}
             >
-                {/* Animation */}
-                <Box animation="pulse 5s infinite" style={{ width: "100%", maxWidth: "400px" }}>
-                    <Lottie animationData={animationData} loop autoplay />
-                </Box>
+                {/* Left Side - Text */}
+                <VStack align={{ base: "center", md: "flex-start" }} spacing={4} flex={1} maxWidth="700px">
+                    <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
+                        <Flex
+                            as="h1"
+                            justifyContent="center"
+                            alignItems="center"
+                            gap={2}
+                            fontSize={{ base: "3xl", md: "5xl" }}
+                            fontWeight="bold"
+                            flexWrap="wrap"  // Allows text to wrap naturally
+                            direction={{ base: "column", md: "row" }} // Switch to column when necessary
+                            textAlign="center" // Ensures alignment in column mode
+                        >
+                            <motion.span variants={slideInLeft} initial="hidden" animate="visible">
+                                <Text as="span" color="gray.900">Hi, I'm</Text>
+                            </motion.span>
+                            <motion.span variants={slideInRight} initial="hidden" animate="visible">
+                                <Text
+                                    as="span"
+                                    color="gray.100"
+                                    display="inline"
+                                    _hover={{ color: "gray.900", transition: "color 0.3s" }}
+                                >
+                                    <Typewriter
+                                        textStyle={{
+                                            fontSize: "inherit",
+                                            fontWeight: "inherit",
+                                            color: "inherit",
+                                        }}
+                                        startDelay={100}
+                                        cursorColor="black"
+                                        multiText={[
+                                            "Jason.",
+                                            "an engineer.",
+                                            "a change-maker.",
+                                            "a problem-solver.",
+                                        ]}
+                                        multiTextDelay={3000}
+                                        typeSpeed={100}
+                                        deleteSpeed={50}
+                                        multiTextLoop
+                                    />
+                                </Text>
+                            </motion.span>
+                        </Flex>
+                    </motion.div>
 
-                {/* Hero Section */}
-                <Flex
-                    as="h1"
-                    justifyContent="center"
-                    alignItems="center"
-                    wrap="nowrap"
-                    gap={2}
-                    fontSize={{ base: "3xl", md: "5xl" }}
-                    fontWeight="bold"
-                    textShadow="0 2px 4px rgba(0, 0, 0, 0.2)"
-                    _hover={{ transform: "scale(1.05)", transition: "0.3s ease-in-out" }}
-                >
-                    <Text as="span" color="gray.600"
-                    >Hi, I'm</Text>
-                    <Text
-                        as="span"
-                        color="blue.400"
-                        display="inline"
-                        _hover={{ color: "blue.500", transition: "color 0.3s" }}
-                    >
-                        <Typewriter
-                            textStyle={{
-                                fontSize: "inherit",
-                                fontWeight: "inherit",
-                                color: "inherit",
-                            }}
-                            startDelay={100}
-                            cursorColor="gray"
-                            multiText={[
-                                "Jason.",
-                                "an aspiring engineer.",
-                                "a change-maker.",
-                                "a problem-solver.",
-                            ]}
-                            multiTextDelay={2000}
-                            typeSpeed={100}
-                            deleteSpeed={50}
-                            multiTextLoop
-                        />
-                    </Text>
-                </Flex>
+                    <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
+                        <Text fontSize="lg" fontWeight="medium">
+                            I am a <Text as="span" fontWeight="bold">student</Text> from the University of Waterloo studying
+                            <Text as="span" fontWeight="bold"> Systems Design Engineering. </Text>
+                            I have <Text as="span" fontWeight="bold">2 years of experience.</Text>
+                            I’ve worked for multiple clients and companies and enjoy what I do!
+                        </Text>
+                    </motion.div>
 
-                {/* Supporting Text */}
-                <Text
-                    fontSize="lg"
-                    color="gray.600"
-                    maxW="600px"
-                    _hover={{ transform: "scale(1.02)", transition: "transform 0.3s" }}
-                >
-                    Welcome to my personal homepage! I am a passionate developer focused
-                    on creating intuitive and impactful digital experiences. Explore my
-                    projects, skills, and more!
-                </Text>
-            </VStack>
+                    <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
+                        <Text fontSize="lg" fontWeight="medium">
+                            I code in <Text as="span" fontWeight="bold">JavaScript, Blockchain, SQL</Text>, and much more.
+                            I'm passionate about technology, diversity, and inclusion.
+                        </Text>
+                    </motion.div>
+                </VStack>
 
-            <Footer />
+                <motion.div initial="hidden" animate="visible" variants={slideInRight}>
+                    <Box width={{ base: "100%", md: "600px" }}>
+                        <Lottie animationData={animationData} loop autoplay />
+                    </Box>
+                </motion.div>
+            </Flex>
+
+            {/* Bottom Background Animation */}
+            <Box position="absolute" bottom="-15" left="0" width="100vw" zIndex="1">
+                <Lottie animationData={bottom} loop autoplay />
+            </Box>
+
+            {/* Bouncing Arrow Animation */}
+            <Box position="absolute" bottom="10px" left="50%" transform="translateX(-50%)" zIndex="1">
+                <motion.div variants={bounceAnimation} animate="animate">
+                    <Lottie animationData={arrow} loop autoplay style={{ width: "100px", height: "100px" }} />
+                </motion.div>
+            </Box>
         </Box>
     );
 };
