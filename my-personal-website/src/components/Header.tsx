@@ -33,7 +33,7 @@ const Header: React.FC = () => {
                 variant="ghost"
                 onClick={() => setIsOpen(!isOpen)}
                 transition="0.3s ease-in-out"
-                _hover={{ transform: "scale(1.1)", color: "blue.500" }}
+                _hover={{ transform: "scale(1.2)" }}
             />
 
             {/* Smooth Dropdown Menu */}
