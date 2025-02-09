@@ -8,6 +8,7 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
+import { Analytics } from '@vercel/analytics/react'; // Use react instead of next
 
 const App: React.FC = () => {
   return (
@@ -25,10 +26,6 @@ const App: React.FC = () => {
           <Home />
         </Box>
 
-        {/* <Box as="section" id="about">
-          <About />
-        </Box> */}
-
         <Box as="section" id="skills">
           <Skills />
         </Box>
@@ -37,15 +34,14 @@ const App: React.FC = () => {
           <Experience />
         </Box>
 
-        {/* <Box as="section" id="education">
-          <Education />
-        </Box> */}
-
         <Box as="section" id="contact">
           <Contact />
         </Box>
 
         <Footer />
+
+        {/* Vercel Analytics */}
+        <Analytics />
       </Box>
     </ChakraProvider>
   );
