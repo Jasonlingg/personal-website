@@ -47,17 +47,10 @@ const Contact = () => {
     };
 
     return (
-        <Box minH="100vh" display="flex" alignItems="center" justifyContent="center" px={4} bg="blue.500" position="relative">
-            <Box
-                position="absolute"
-                top="-10"
-                left="0"
-                width="100vw"
-                zIndex="1"
-                transform="scaleY(-1)" // Flips the animation over the X-axis
-            >
-                <Lottie animationData={bottom} loop autoplay />
-            </Box>
+        <Box minH="100vh" display="flex" alignItems="center" justifyContent="center" px={4} bg="blue.500" position="relative" pt={20}
+        >
+
+
             <MotionBox
                 bg="white"
                 p={8}
@@ -74,7 +67,7 @@ const Contact = () => {
                     Contact Me
                 </Heading>
                 <Text textAlign="center" mb={6} color="gray.600">
-                    Let’s connect! Feel free to reach out via the form below.
+                    Let’s connect! Feel free to reach out via the form below with any inquires and messages.
                 </Text>
 
                 <VStack spacing={4} as="form" onSubmit={handleSubmit}>
@@ -118,7 +111,7 @@ const Contact = () => {
                     </Button>
                 </VStack>
             </MotionBox>
-        </Box>
+        </Box >
     );
 };
 
