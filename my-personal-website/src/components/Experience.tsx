@@ -101,7 +101,7 @@ const VerticalTimeline = () => {
             <Box minH="100vh" w="full" position="relative" px={4} py={12}>
                 <Box
                     position="absolute"
-                    top="-20"
+                    top="-80px"
                     left="0"
                     width="100vw"
                     zIndex="1"
@@ -117,7 +117,7 @@ const VerticalTimeline = () => {
                     zIndex="-1"
                 />
                 {/* Page title - always above the timeline */}
-                <VStack maxW="800px" mx="auto" mb={16} textAlign="center" pt={20}>
+                <VStack maxW="800px" mx="auto" mb={16} textAlign="center" pt={40}>
                     <Heading fontSize={{ base: '3xl', md: '4xl' }} color="gray.100">
                         Professional Journey
                     </Heading>
@@ -132,7 +132,7 @@ const VerticalTimeline = () => {
                     left={{ base: '20px', md: '50%' }}
                     transform={{ base: 'translateX(0)', md: 'translateX(-50%)' }}
                     w="4px"
-                    top="250px" // Moves timeline down to prevent title overlap
+                    top="320px" // Moves timeline down to prevent title overlap
                     h="calc(100% - 180px)" // Ensures it doesn't reach the top
                     bgGradient="linear(to-b, blue.200, blue.300, blue.200)"
                     opacity={0.8}
