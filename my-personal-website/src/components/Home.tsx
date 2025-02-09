@@ -40,8 +40,10 @@ const Home: React.FC = () => {
         <Box position="relative" minHeight="100vh" bg="blue.500" color="white">
             {/* Social Media Icons */}
             <HStack justifyContent="center" spacing={6} pt={4}>
-                <Link href="#"><FaGithub size={24} /></Link>
-                <Link href="#"><FaLinkedin size={24} /></Link>
+                <Link href="https://github.com/Jasonlingg" _hover={{ transform: "scale(1.2)" }}
+                ><FaGithub size={24} /></Link>
+                <Link href="https://www.linkedin.com/in/jason-lingg/" _hover={{ transform: "scale(1.2)" }}
+                ><FaLinkedin size={24} /></Link>
             </HStack>
 
             {/* Main Content */}
@@ -103,19 +105,17 @@ const Home: React.FC = () => {
 
                     <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
                         <Text fontSize="lg" fontWeight="medium">
-                            I am a <Text as="span" fontWeight="bold">student</Text> from the University of Waterloo studying
-                            <Text as="span" fontWeight="bold"> Systems Design Engineering. </Text>
-                            I have <Text as="span" fontWeight="bold">2 years of experience.</Text>
-                            I’ve worked for multiple clients and companies and enjoy what I do!
+                            I am a <Text as="span" fontWeight="bold">Systems Design Engineering</Text> student at the University of Waterloo with a passion for innovation.
+                            As a <Text as="span" fontWeight="bold">growth-driven Software Engineer</Text>, I thrive on solving complex problems and building impactful solutions.
                         </Text>
                     </motion.div>
 
                     <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
                         <Text fontSize="lg" fontWeight="medium">
-                            I code in <Text as="span" fontWeight="bold">JavaScript, Blockchain, SQL</Text>, and much more.
-                            I'm passionate about technology, diversity, and inclusion.
+                            With experience across <Text as="span" fontWeight="bold">big tech and fast-paced startups</Text>, I love tackling challenges and creating meaningful technology.
                         </Text>
                     </motion.div>
+
                 </VStack>
 
                 <motion.div initial="hidden" animate="visible" variants={slideInRight}>
