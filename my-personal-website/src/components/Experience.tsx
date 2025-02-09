@@ -100,19 +100,29 @@ const VerticalTimeline = () => {
         <>
             <Box minH="100vh" w="full" position="relative" px={4} py={12}>
                 <Box
-                    bg="rgb(217, 223, 230)"
+                    position="absolute"
+                    top="-20"
+                    left="0"
+                    width="100vw"
+                    zIndex="1"
+                    transform="scaleY(-1)" // Flips the animation over the X-axis
+                >
+                    <Lottie animationData={bottom} loop autoplay />
+                </Box>
+                <Box
+                    bg="blue.500"
 
                     position="absolute"
                     inset="0"
                     zIndex="-1"
                 />
                 {/* Page title - always above the timeline */}
-                <VStack spacing={2} maxW="800px" mx="auto" mb={16} textAlign="center">
-                    <Heading fontSize={{ base: '4xl', md: '5xl' }} color="blue.500">
+                <VStack maxW="800px" mx="auto" mb={16} textAlign="center" pt={20}>
+                    <Heading fontSize={{ base: '3xl', md: '4xl' }} color="gray.100">
                         Professional Journey
                     </Heading>
-                    <Text fontSize="lg" color="blue.400" >
-                        My career progression through tech
+                    <Text fontSize="lg" color="gray.100" opacity={0.7} >
+                        My career progression through tech!
                     </Text>
                 </VStack>
 
@@ -122,9 +132,9 @@ const VerticalTimeline = () => {
                     left={{ base: '20px', md: '50%' }}
                     transform={{ base: 'translateX(0)', md: 'translateX(-50%)' }}
                     w="4px"
-                    top="180px" // Moves timeline down to prevent title overlap
+                    top="250px" // Moves timeline down to prevent title overlap
                     h="calc(100% - 180px)" // Ensures it doesn't reach the top
-                    bgGradient="linear(to-b, blue.300, blue.600, blue.300)"
+                    bgGradient="linear(to-b, blue.200, blue.300, blue.200)"
                     opacity={0.8}
                     zIndex={0}
                 />
