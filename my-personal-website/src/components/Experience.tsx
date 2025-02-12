@@ -101,7 +101,7 @@ const VerticalTimeline = () => {
             <Box minH="100vh" w="full" position="relative" px={4} py={12}>
                 <Box
                     position="absolute"
-                    top="-80px"
+                    top={{ base: "-2px", md: "-80px" }}
                     left="0"
                     width="100vw"
                     zIndex="1"
