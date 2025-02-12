@@ -62,9 +62,10 @@ const Home: React.FC = () => {
                             as="h1"
                             justifyContent="center"
                             alignItems="center"
-                            gap={2}
+                            marginTop={{ base: "20px", md: "0" }}
                             fontSize={{ base: "3xl", md: "5xl" }}
                             fontWeight="bold"
+                            gap={2}
                             flexWrap="wrap"  // Allows text to wrap naturally
                             direction={{ base: "column", md: "row" }} // Switch to column when necessary
                             textAlign="center" // Ensures alignment in column mode
@@ -126,12 +127,13 @@ const Home: React.FC = () => {
             </Flex>
 
             {/* Bottom Background Animation */}
-            <Box position="absolute" bottom="-15" left="0" width="100vw" zIndex="1">
+            <Box position="absolute" bottom={{ base: "-2%", md: "-5%" }}
+                left="0" width="100vw" zIndex="1">
                 <Lottie animationData={bottom} loop autoplay />
             </Box>
 
             {/* Bouncing Arrow Animation */}
-            <Box position="absolute" bottom="10px" left="50%" transform="translateX(-50%)" zIndex="1">
+            <Box position="absolute" bottom={{ base: "-8%", md: "2%" }} left="50%" transform="translateX(-50%)" zIndex="3">
                 <motion.div variants={bounceAnimation} animate="animate">
                     <Lottie animationData={arrow} loop autoplay style={{ width: "100px", height: "100px" }} />
                 </motion.div>

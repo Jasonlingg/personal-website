@@ -115,12 +115,11 @@ const AboutSkills = () => {
                     {/* Right Side - About Me Content */}
                     <VStack spacing={5} textAlign="center" flex="2">
                         <Heading size="lg" fontWeight="bold" color="gray.600">
-                            Nice To Meet You!
-                        </Heading>
+                            A bit about me—who I am and what I do.                    </Heading>
 
                         <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
                             <Text fontSize="lg" fontWeight="medium" textAlign="left">
-                                I have experience in both <Text as="span" fontWeight="bold">frontend and backend development</Text>, as well as <Text as="span" fontWeight="bold">mobile app development</Text>, working with modern frameworks like React TypeScript, Spring Boot, Django, and React Native.
+                                Hey there &#128075;, my name is Jason Ling! I have experience in both <Text as="span" fontWeight="bold">frontend and backend development</Text>, as well as <Text as="span" fontWeight="bold">mobile app development</Text>, working with modern frameworks like React TypeScript, Spring Boot, Django, and React Native.
                                 On the frontend, I focus on crafting <Text as="span" fontWeight="bold">responsive, accessible, and visually engaging</Text> user interfaces that enhance user interaction.
                                 On the backend, I specialize in building <Text as="span" fontWeight="bold">scalable APIs, optimizing database performance,</Text> and implementing <Text as="span" fontWeight="bold">secure authentication systems</Text> to support complex applications.
                             </Text>
