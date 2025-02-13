@@ -40,10 +40,20 @@ const Home: React.FC = () => {
         <Box position="relative" minHeight="100vh" bg="blue.500" color="white">
             {/* Social Media Icons */}
             <HStack justifyContent="center" spacing={6} pt={4}>
-                <Link href="https://github.com/Jasonlingg" _hover={{ transform: "scale(1.2)" }}
-                ><FaGithub size={24} /></Link>
-                <Link href="https://www.linkedin.com/in/jason-lingg/" _hover={{ transform: "scale(1.2)" }}
-                ><FaLinkedin size={24} /></Link>
+                <Link
+                    href="https://github.com/Jasonlingg"
+                    isExternal
+                    _hover={{ transform: "scale(1.2)" }}
+                >
+                    <FaGithub size={24} />
+                </Link>
+                <Link
+                    href="https://www.linkedin.com/in/jason-lingg/"
+                    isExternal
+                    _hover={{ transform: "scale(1.2)" }}
+                >
+                    <FaLinkedin size={24} />
+                </Link>
             </HStack>
 
             {/* Main Content */}
