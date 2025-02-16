@@ -7,7 +7,6 @@ import bottom from "../animations/bottom.json";
 import arrow from "../animations/arrow.json";
 import { FaGithub, FaTwitter, FaLinkedin, FaYoutube, FaBlog } from "react-icons/fa";
 import Typewriter from "react-typewriter-effect";
-
 // Motion Animations
 const fadeInVariant = {
     hidden: { opacity: 0, y: 50 },
@@ -62,82 +61,64 @@ const Home: React.FC = () => {
                 align="center"
                 justify="center"
                 minHeight="80vh"
-                px={10}
+                px={20}
                 textAlign={{ base: "center", md: "left" }}
             >
                 {/* Left Side - Text */}
-                <VStack align={{ base: "center", md: "flex-start" }} spacing={4} flex={1} maxWidth="700px">
+                <VStack align={{ base: "center", md: "flex-start" }} spacing={1} flex={1} maxWidth="700px">
                     <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
                         <Flex
                             as="h1"
                             justifyContent="center"
                             alignItems="center"
                             marginTop={{ base: "20px", md: "0" }}
-                            fontSize={{ base: "3xl", md: "5xl" }}
+                            fontSize={{ base: "4xl", md: "7xl" }}
                             fontWeight="bold"
-                            gap={2}
+                            rowGap={{ base: 0, md: 2 }} // No extra gap in column mode
+                            columnGap={{ base: 0, md: 4 }}
+                            className="limelight-regular"
                             flexWrap="wrap"  // Allows text to wrap naturally
                             direction={{ base: "column", md: "row" }} // Switch to column when necessary
                             textAlign="center" // Ensures alignment in column mode
                         >
                             <motion.span variants={slideInLeft} initial="hidden" animate="visible">
-                                <Text as="span" color="gray.900">Hi, I'm</Text>
+                                <Text as="span" color="gray.900" >Jason</Text>
                             </motion.span>
                             <motion.span variants={slideInRight} initial="hidden" animate="visible">
                                 <Text
                                     as="span"
                                     color="gray.100"
                                     display="inline"
-                                    _hover={{ color: "gray.900", transition: "color 0.3s" }}
                                 >
-                                    <Typewriter
-                                        textStyle={{
-                                            fontSize: "inherit",
-                                            fontWeight: "inherit",
-                                            color: "inherit",
-                                        }}
-                                        startDelay={100}
-                                        cursorColor="black"
-                                        multiText={[
-                                            "Jason.",
-                                            "an engineer.",
-                                            "a change-maker.",
-                                            "a problem-solver.",
-                                        ]}
-                                        multiTextDelay={3000}
-                                        typeSpeed={100}
-                                        deleteSpeed={50}
-                                        multiTextLoop
-                                    />
+                                    Ling
                                 </Text>
                             </motion.span>
                         </Flex>
                     </motion.div>
+                    <Box maxW="600px" >
+                        <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
+                            <Text fontSize="lg" fontWeight="medium">
+                                I'm a <Text as="span" fontWeight="bold">Systems Design Engineering</Text> student at the University of Waterloo with a passion for innovation.
+                            </Text>
+                        </motion.div>
 
-                    <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
-                        <Text fontSize="lg" fontWeight="medium">
-                            I am a <Text as="span" fontWeight="bold">Systems Design Engineering</Text> student at the University of Waterloo with a passion for innovation.
-                            As a <Text as="span" fontWeight="bold">growth-driven Software Engineer</Text>, I thrive on solving complex problems and building impactful solutions.
-                        </Text>
-                    </motion.div>
-
-                    <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
-                        <Text fontSize="lg" fontWeight="medium">
-                            With experience across <Text as="span" fontWeight="bold">big tech and fast-paced startups</Text>, I love tackling challenges and creating meaningful technology.
-                        </Text>
-                    </motion.div>
-
+                        <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
+                            <Text fontSize="lg" fontWeight="medium">
+                                With experience across <Text as="span" fontWeight="bold">big tech and fast-paced startups</Text>, I love tackling challenges and building a product!
+                            </Text>
+                        </motion.div>
+                    </Box>
                 </VStack>
 
                 <motion.div initial="hidden" animate="visible" variants={slideInRight}>
-                    <Box width={{ base: "100%", md: "600px" }}>
+                    <Box width={{ base: "100%", md: "650px" }}>
                         <Lottie animationData={animationData} loop autoplay />
                     </Box>
                 </motion.div>
             </Flex>
 
             {/* Bottom Background Animation */}
-            <Box position="absolute" bottom={{ base: "-2%", md: "-5%" }}
+            <Box position="absolute" bottom={{ base: "-2%", md: "-3%" }}
                 left="0" width="100vw" zIndex="1">
                 <Lottie animationData={bottom} loop autoplay />
             </Box>
