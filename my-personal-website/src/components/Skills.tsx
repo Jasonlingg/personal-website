@@ -87,7 +87,7 @@ const AboutSkills = () => {
 
             {/* White container */}
             <Container
-                maxW="5xl"
+                maxW="6xl"
                 bg="rgb(217, 223, 230)" p={8}
                 // borderRadius="lg"
                 // boxShadow="2xl"
@@ -103,8 +103,6 @@ const AboutSkills = () => {
                     align="center"
                     justify="center"
                     px={4}
-                    py={16}
-
                     gap="80px"
                 >
                     {/* Left Side - Lottie Animation */}
@@ -115,7 +113,7 @@ const AboutSkills = () => {
                     {/* Right Side - About Me Content */}
                     <VStack spacing={5} textAlign="center" flex="2">
                         <Heading size="lg" fontWeight="bold" color="gray.600">
-                            A bit about me—who I am and what I do.                    </Heading>
+                            A Bit About Me—Who I am And What I Do                   </Heading>
 
                         <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
                             <Text fontSize="lg" fontWeight="medium" textAlign="left">
@@ -138,41 +136,47 @@ const AboutSkills = () => {
                 <Divider my={8} color="blue.500"></Divider>
 
                 {/* Skills Section */}
-                <Heading size="lg" textAlign="center" mb={6} color="gray.800">
-                    My Skills
-                </Heading>
+                <VStack spacing={5} textAlign="center" flex="2">
 
-                <SimpleGrid columns={{ base: 2, md: 3 }} spacing={6}>
-                    {Object.entries(skills).map(([category, items]) => (
-                        <Box key={category}>
-                            <Heading size="md" color="gray.700" mb={4}>
-                                {category.charAt(0).toUpperCase() + category.slice(1)}
-                            </Heading>
-                            <Flex wrap="wrap" gap={4}>
-                                {items.map(({ icon: Icon, name, color }) => (
-                                    <MotionBox
-                                        key={name}
-                                        p={3}
-                                        borderRadius="md"
-                                        bg="gray.100"
-                                        boxShadow="md"
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.9 }}
-                                        variants={itemVariant}
-                                        display="flex"
-                                        alignItems="center"
-                                        justifyContent="center"
-                                    >
-                                        <Icon size="30px" color={color} />
-                                        <Text ml={2} fontWeight="bold" color="gray.800">
-                                            {name}
-                                        </Text>
-                                    </MotionBox>
-                                ))}
-                            </Flex>
-                        </Box>
-                    ))}
-                </SimpleGrid>
+                    <Heading size="lg" textAlign="center" mx={6} fontWeight="bold" color="gray.600">
+                        My Engineering Toolkit—How I Build Solutions                </Heading>
+                    <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
+
+                    </motion.div>
+                    <SimpleGrid columns={{ base: 2, md: 3 }} spacing={6} >
+                        {Object.entries(skills).map(([category, items]) => (
+                            <Box key={category}>
+                                <Heading size="md" color="gray.700" mb={4}>
+                                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                                </Heading>
+                                <Flex wrap="wrap" gap={4}>
+                                    {items.map(({ icon: Icon, name, color }) => (
+                                        <MotionBox
+                                            key={name}
+                                            p={3}
+                                            borderRadius="md"
+                                            bg="gray.100"
+                                            boxShadow="md"
+                                            whileHover={{ scale: 1.1 }}
+                                            whileTap={{ scale: 0.9 }}
+                                            variants={itemVariant}
+                                            display="flex"
+                                            alignItems="center"
+                                            justifyContent="center"
+                                        >
+                                            <Icon size="30px" color={color} />
+                                            <Text ml={2} fontWeight="bold" color="gray.800">
+                                                {name}
+                                            </Text>
+                                        </MotionBox>
+                                    ))}
+                                </Flex>
+                            </Box>
+                        ))}
+                    </SimpleGrid>
+                </VStack>
+
+
             </Container>
         </Box >
     );
