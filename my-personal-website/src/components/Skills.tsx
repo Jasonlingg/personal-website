@@ -10,6 +10,7 @@ import {
     VStack,
     Divider,
     useColorModeValue,
+    Grid,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import {
@@ -31,6 +32,14 @@ const fadeInVariant = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } },
 };
+
+const categoryDescriptions: Record<string, string> = {
+    frontend: "These are the essential frameworks, libraries, and tools I use to build interactive and user-friendly web interfaces.",
+    backend: "These tools and technologies power my server-side logic, APIs, and database interactions for scalable applications.",
+    languages: "The programming languages I use to develop software solutions across different domains and platforms.",
+    tools: "A collection of essential utilities and platforms that streamline my development workflow and improve efficiency.",
+};
+
 const skills = {
     languages: [
         { icon: FaJava, name: "Java", color: "#007396" },
@@ -88,7 +97,7 @@ const AboutSkills = () => {
             {/* White container */}
             <Container
                 maxW="6xl"
-                bg="rgb(217, 223, 230)" p={8}
+                bg="rgb(217, 223, 230)"
                 // borderRadius="lg"
                 // boxShadow="2xl"
                 as={motion.div}
@@ -113,7 +122,7 @@ const AboutSkills = () => {
                     {/* Right Side - About Me Content */}
                     <VStack spacing={5} textAlign="center" flex="2">
                         <Heading size="lg" fontWeight="bold" color="gray.600">
-                            A Bit About Me—Who I am And What I Do                   </Heading>
+                            A Bit About Me                  </Heading>
 
                         <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
                             <Text fontSize="lg" fontWeight="medium" textAlign="left">
@@ -133,48 +142,59 @@ const AboutSkills = () => {
                     </VStack>
                 </Flex>
 
-                <Divider my={8} color="blue.500"></Divider>
+                <VStack spacing={10} textAlign="center" flex="2" px={6} w="full">
 
-                {/* Skills Section */}
-                <VStack spacing={5} textAlign="center" flex="2">
+                    <motion.div initial="hidden" animate="visible" variants={fadeInVariant} />
 
-                    <Heading size="lg" textAlign="center" mx={6} fontWeight="bold" color="gray.600">
-                        My Engineering Toolkit—How I Build Solutions                </Heading>
-                    <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
-
-                    </motion.div>
-                    <SimpleGrid columns={{ base: 2, md: 3 }} spacing={6} >
+                    <VStack spacing={8} align="start" w="full">
                         {Object.entries(skills).map(([category, items]) => (
-                            <Box key={category}>
-                                <Heading size="md" color="gray.700" mb={4}>
+                            <MotionBox
+                                key={category}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4 }}
+                                w="full"
+                            >
+                                <Heading size="md" color="gray.600" mb={2}>
                                     {category.charAt(0).toUpperCase() + category.slice(1)}
                                 </Heading>
-                                <Flex wrap="wrap" gap={4}>
+                                <Text color="gray.500" mb={4} fontSize="sm">
+                                    {/* Customize this text for each category */}
+                                    {categoryDescriptions[category] || "A set of technologies I use in my work."}
+                                </Text>
+                                <Grid
+                                    templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(3, 1fr)", md: "repeat(4, 1fr)" }}
+                                    gap={4}
+                                    w="full"
+                                >
                                     {items.map(({ icon: Icon, name, color }) => (
                                         <MotionBox
                                             key={name}
-                                            p={3}
-                                            borderRadius="md"
-                                            bg="gray.100"
-                                            boxShadow="md"
-                                            whileHover={{ scale: 1.1 }}
-                                            whileTap={{ scale: 0.9 }}
-                                            variants={itemVariant}
+                                            p={4}
+                                            borderRadius="xl"
+                                            bg="gray.50"
+                                            boxShadow="lg"
+                                            whileHover={{ scale: 1.05, boxShadow: "xl" }}
+                                            whileTap={{ scale: 0.95 }}
                                             display="flex"
                                             alignItems="center"
                                             justifyContent="center"
+                                            flexDir="column"
+                                            textAlign="center"
                                         >
-                                            <Icon size="30px" color={color} />
-                                            <Text ml={2} fontWeight="bold" color="gray.800">
+                                            <Icon size="32px" color={color} />
+                                            <Text mt={2} fontWeight="semibold" color="gray.800">
                                                 {name}
                                             </Text>
                                         </MotionBox>
                                     ))}
-                                </Flex>
-                            </Box>
+                                </Grid>
+                            </MotionBox>
                         ))}
-                    </SimpleGrid>
+                    </VStack>
                 </VStack>
+
+
 
 
             </Container>
