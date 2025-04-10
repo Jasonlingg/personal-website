@@ -14,9 +14,4 @@ This is my personal website built with **React** and **TypeScript**. The site sh
 - **Styling**: Chakra UI
 - **Animations**: React Animation, Lottie
 
-## 📜 License
-This project is **open-source** and available under the **MIT License**.
-
-## 📬 Contact
-For any inquiries, feel free to reach out to me at ✉️ **[your-email@example.com]** or connect with me on **[LinkedIn](https://www.linkedin.com/in/your-profile)**.
 
