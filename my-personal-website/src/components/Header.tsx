@@ -20,13 +20,12 @@ const Header: React.FC = () => {
         const section = document.querySelector(href);
         if (section) {
             section.scrollIntoView({ behavior: "smooth", block: "start" });
-            setIsOpen(false); // Close menu after clicking
+            setIsOpen(false);
         }
     };
 
     return (
         <Box position="fixed" top="20px" right="20px" zIndex="1000">
-            {/* Menu Button */}
             <IconButton
                 aria-label="Open Menu"
                 icon={<HamburgerIcon boxSize={6} />}
@@ -35,8 +34,6 @@ const Header: React.FC = () => {
                 transition="0.3s ease-in-out"
                 _hover={{ transform: "scale(1.2)" }}
             />
-
-            {/* Smooth Dropdown Menu */}
             <MotionBox
                 initial={{ opacity: 0, y: -10, scale: 0.95 }}
                 animate={isOpen ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: -10, scale: 0.95 }}

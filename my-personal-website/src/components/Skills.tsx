@@ -114,10 +114,10 @@ const AboutSkills = () => {
                     px={4}
                     gap="80px"
                 >
-                    {/* Left Side - Lottie Animation */}
+                    {/* Left Side - Lottie Animation
                     <Box flex="1" maxW="300px" ml="-60px">
                         <Lottie animationData={meteor} loop autoPlay />
-                    </Box>
+                    </Box> */}
 
                     {/* Right Side - About Me Content */}
                     <VStack spacing={5} textAlign="center" flex="2">
@@ -125,18 +125,18 @@ const AboutSkills = () => {
                             A Bit About Me                  </Heading>
 
                         <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
-                            <Text fontSize="lg" fontWeight="medium" textAlign="left">
-                                Hey there &#128075;, my name is Jason Ling! I have experience in both <Text as="span" fontWeight="bold">frontend and backend development</Text>, as well as <Text as="span" fontWeight="bold">mobile app development</Text>, working with modern frameworks like React TypeScript, Spring Boot, Django, and React Native.
+                            <Text fontSize="lg" fontWeight="medium" textAlign="center">
+                                Hey there &#128075;, my name is Jason Ling! I have experience in both <Text as="span" fontWeight="bold">fullstack development</Text>, as well as <Text as="span" fontWeight="bold">mobile app development</Text>, working with modern frameworks like React TypeScript, Spring Boot, Django, and React Native.
                                 On the frontend, I focus on crafting <Text as="span" fontWeight="bold">responsive, accessible, and visually engaging</Text> user interfaces that enhance user interaction.
-                                On the backend, I specialize in building <Text as="span" fontWeight="bold">scalable APIs, optimizing database performance,</Text> and implementing <Text as="span" fontWeight="bold">secure authentication systems</Text> to support complex applications.
+                                On the backend, I specialize in building <Text as="span" fontWeight="bold">scalable APIs, optimizing database performance,</Text> and extremely passionate about <Text as="span" fontWeight="bold">AI and Machine Learning</Text>.
                             </Text>
                         </motion.div>
 
                         <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
-                            <Text fontSize="lg" fontWeight="medium" textAlign="left">
+                            <Text fontSize="lg" fontWeight="medium" textAlign="center">
                                 Outside of coding, I enjoy <Text as="span" fontWeight="bold">playing badminton</Text>—a sport that sharpens both my reflexes and strategic thinking.
                                 When I’m not on the court, you’ll often find me catching up on school, learning new cooking recipes, or watching sports on TV.
-                                I’m <Text as="span" fontWeight="bold">confident, naturally curious,</Text> and always striving to refine my skills.
+                                I’m <Text as="span" fontWeight="bold">confident, naturally curious,</Text> and always striving to refine and learn new skills. 
                             </Text>
                         </motion.div>
                     </VStack>

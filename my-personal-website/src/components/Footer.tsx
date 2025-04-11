@@ -10,21 +10,18 @@ const Footer: React.FC = () => {
             <Flex
                 direction={{ base: "column", md: "row" }}
                 align="center"
-                justify="space-between"  // This ensures spacing between the elements
+                justify="space-between" 
                 maxW="container.xl"
                 mx="auto"
                 px={4}
-                gap={4}  // Adds space between the elements
+                gap={4} 
             >
-                {/* Lottie Animation */}
                 <Lottie animationData={headerAnimation} style={{ width: 70, height: 70 }} />
 
-                {/* Copyright */}
                 <Text fontSize="sm" textAlign={{ base: "center", md: "left" }}>
                     © {new Date().getFullYear()} Jason Ling. All rights reserved.
                 </Text>
 
-                {/* Social Links */}
                 <HStack spacing={6}>
                     <Link
                         href="https://www.linkedin.com/in/jason-lingg/"

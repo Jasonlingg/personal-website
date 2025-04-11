@@ -15,30 +15,18 @@ interface Experience {
     points: string[];
     tags: string[];
 }
-
 const experiences: Experience[] = [
     {
         company: "OwnersBox Fantasy Sports",
-        role: "Software Developer",
+        role: "Full-Stack Software Developer",
         date: "Jan 2025 - Present",
         location: "Kitchener, Ontario",
-        tags: ["Vue.js", "React Native", "Java", "REST APIs"],
+        tags: ["Vue.js", "React Native", "Java", "JAX-RS", "Software Testing"],
         points: [
-            "Developed user-facing screens for the Player Props feature using Vue.js and React Native, enhancing user engagement and experience.",
-            "Implemented market-type discount sorting feature in Java, leveraging RESTful APIs with JAX-RS for efficient data processing."
-        ]
-    },
-    {
-        company: "University of Waterloo Blueprint",
-        role: "Project Developer",
-        date: "Apr 2024 - Jan 2025",
-        location: "Waterloo, Ontario",
-        tags: ["Next.js", "React", "Prisma", "SQL"],
-        points: [
-            "Developed an admin calendar system for a class platform using Next.js for a nonprofit organization.",
-            "Built event sorting and filtering functionality in a React calendar while implementing vertical scrolling to load events seamlessly.",
-            "Architected robust SQL database schema using Prisma ORM, enhancing data retrieval efficiency.",
-            "Managed development and spike tickets, leading to a 20% improvement in task tracking."
+            "Developed real-time APIs using JAX-RS to power a market discount sorting system, increasing discounted market usage by 30% and boosting daily platform engagement by 15%.",
+            "Redesigned call-to-action user flows for the Player Props game using Vue.js and React Native, reducing load times by 20% and driving a 15% increase in game retention.",
+            "Built scalable Java APIs to sort market metrics and export data to CSV, reducing manual processing time by 30%.",
+            "Implemented comprehensive unit and API tests across the stack to increase code coverage by 5%, and automated UI testing with Playwright to validate frontend workflows via screenshot comparison."
         ]
     },
     {
@@ -46,38 +34,23 @@ const experiences: Experience[] = [
         role: "System Software Engineer",
         date: "May 2024 - Aug 2024",
         location: "Waterloo, Ontario",
-        tags: ["Django", "React", "JWT", "Microsoft IIS"],
+        tags: ["Django", "React", "JWT", "Microsoft IIS", "CSV", "data piplines"],
         points: [
-            "Led the development of an internal Dashboard and Query tool, leveraging Django REST APIs and React.",
-            "Integrated SharePoint’s API, increasing the speed of Excel data retrieval and management processes by 50%.",
-            "Enhanced security by implementing JWT for authorization, significantly reducing risk of unauthorized access.",
-            "Administered the deployment on Microsoft IIS and project maintenance on virtual machines."
+            "Led the development of a Django and React-based tool for lab compliance, reducing data lookup speed by 50%.",
+            "Integrated JWT-based authentication to secure access for over 500 users.",
+            "Re-architected data pipeline APIs using parallelism and data chunking, reducing data retrieval time by 75% and enabling near-real-time reporting from CSV and databases."
         ]
     },
     {
         company: "Immigr8",
-        role: "Full-Stack Software Developer",
+        role: "Software Engineer",
         date: "Sep 2023 - Dec 2023",
         location: "Belleair Beach, Florida",
-        tags: ["Spring Boot", "PostgreSQL", "AWS S3", "OpenAI API"],
+        tags: ["Spring Boot", "PostgreSQL", "MVC", "OAuth2", "LlamaIndex"],
         points: [
-            "Developed a web-based application to streamline immigration processes, reducing visa processing time by 30%.",
-            "Implemented calendar event tracking in Java with Spring Boot and PostgreSQL, incorporating Calendly OAuth 2.0.",
-            "Executed document storage and uploading using AWS S3, and developed 20+ pages of user-facing screens with React.",
-            "Engineered a tool using LlamaIndex with OpenAI’s API to ingest and query multiple US immigration sources."
-        ]
-    },
-    {
-        company: "Jasmine AI",
-        role: "Lead Backend Software Developer",
-        date: "Jun 2023 - Dec 2023",
-        location: "Toronto, Ontario",
-        tags: ["Python", "Flask", "Azure", "Docker"],
-        points: [
-            "Led backend development of a dashboard and SMTP email service using Python and Flask.",
-            "Monitored and managed dockerized web applications deployed on Microsoft Azure.",
-            "Built a robust web scraping tool in Python, extracting relevant information from 40+ diverse web sources.",
-            "Processed real-estate data using LlamaIndex, storing it in a vector database for querying and analysis."
+            "Optimized data retrieval in a Spring Boot web application with PostgreSQL, improving API performance and reducing visa processing time by 20%.",
+            "Engineered an intelligent tool using LlamaIndex to query 200+ pages of U.S. documentation to evaluate visa eligibility.",
+            "Implemented calendar event tracking with Spring Boot and integrated Calendly OAuth 2.0, streamlining appointment booking for 50+ users."
         ]
     },
     {
