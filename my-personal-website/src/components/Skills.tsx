@@ -94,36 +94,28 @@ const AboutSkills = () => {
         <Box bg="rgb(217, 223, 230)"
             minH="100vh" py={10} display="flex" justifyContent="center">
 
-            {/* White container */}
             <Container
                 maxW="6xl"
                 bg="rgb(217, 223, 230)"
-                // borderRadius="lg"
-                // boxShadow="2xl"
                 as={motion.div}
                 initial="hidden"
                 animate="visible"
                 variants={containerVariant}
                 zIndex={2}
             >
-                {/* About Me Section */}
-                <Flex
-                    direction={{ base: "column", md: "row" }}
-                    align="center"
-                    justify="center"
-                    px={4}
-                    gap="80px"
-                >
-                    {/* Left Side - Lottie Animation
-                    <Box flex="1" maxW="300px" ml="-60px">
-                        <Lottie animationData={meteor} loop autoPlay />
-                    </Box> */}
-
-                    {/* Right Side - About Me Content */}
-                    <VStack spacing={5} textAlign="center" flex="2">
-                        <Heading size="lg" fontWeight="bold" color="gray.600">
-                            A Bit About Me                  </Heading>
-
+                <VStack spacing={10} textAlign="center" flex="2" px={6} w="full">
+                    <MotionBox
+                        bg="gray.50"
+                        borderRadius="xl"
+                        borderWidth="2px"
+                        borderColor="gray.300"
+                        p={8}
+                        w="full"
+                        mb={2}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
                         <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
                             <Text fontSize="lg" fontWeight="medium" textAlign="center">
                                 Hey there &#128075;, my name is Jason Ling! I have experience in both <Text as="span" fontWeight="bold">fullstack development</Text>, as well as <Text as="span" fontWeight="bold">mobile app development</Text>, working with modern frameworks like React TypeScript, Spring Boot, Django, and React Native.
@@ -131,22 +123,21 @@ const AboutSkills = () => {
                                 On the backend, I specialize in building <Text as="span" fontWeight="bold">scalable APIs, optimizing database performance,</Text> and extremely passionate about <Text as="span" fontWeight="bold">AI and Machine Learning</Text>.
                             </Text>
                         </motion.div>
-
                         <motion.div initial="hidden" animate="visible" variants={fadeInVariant}>
-                            <Text fontSize="lg" fontWeight="medium" textAlign="center">
+                            <Text fontSize="lg" fontWeight="medium" textAlign="center" mt={4}>
                                 Outside of coding, I enjoy <Text as="span" fontWeight="bold">playing badminton</Text>—a sport that sharpens both my reflexes and strategic thinking.
-                                When I’m not on the court, you’ll often find me catching up on school, learning new cooking recipes, or watching sports on TV.
-                                I’m <Text as="span" fontWeight="bold">confident, naturally curious,</Text> and always striving to refine and learn new skills. 
+                                When I'm not on the court, you'll often find me catching up on school, learning new cooking recipes, or watching sports on TV.
+                                I'm <Text as="span" fontWeight="bold">confident, naturally curious,</Text> and always striving to refine and learn new skills. 
                             </Text>
                         </motion.div>
-                    </VStack>
-                </Flex>
-
-                <VStack spacing={10} textAlign="center" flex="2" px={6} w="full">
-
-                    <motion.div initial="hidden" animate="visible" variants={fadeInVariant} />
-
-                    <VStack spacing={8} align="start" w="full">
+                    </MotionBox>
+                    <Heading size="lg" fontWeight="bold" color="gray.600" mb={4}>
+                        My Technical Skills
+                    </Heading>
+                    <Text color="gray.500" fontSize="lg" mb={8}>
+                        Here are the core technologies, languages, and tools I use to build modern, scalable, and engaging applications.
+                    </Text>
+                    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} w="full">
                         {Object.entries(skills).map(([category, items]) => (
                             <MotionBox
                                 key={category}
@@ -154,28 +145,35 @@ const AboutSkills = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4 }}
                                 w="full"
+                                bg="gray.50"
+                                borderRadius="xl"
+                                borderWidth="2px"
+                                borderColor="gray.300"
+                                p={6}
+                                display="flex"
+                                flexDirection="column"
+                                alignItems="flex-start"
                             >
-                                <Heading size="md" color="gray.600" mb={2}>
+                                <Heading size="md" color="gray.700" mb={2}>
                                     {category.charAt(0).toUpperCase() + category.slice(1)}
                                 </Heading>
                                 <Text color="gray.500" mb={4} fontSize="sm">
-                                    {/* Customize this text for each category */}
                                     {categoryDescriptions[category] || "A set of technologies I use in my work."}
                                 </Text>
                                 <Grid
-                                    templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(3, 1fr)", md: "repeat(4, 1fr)" }}
+                                    templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(3, 1fr)" }}
                                     gap={4}
                                     w="full"
                                 >
                                     {items.map(({ icon: Icon, name, color }) => (
                                         <MotionBox
                                             key={name}
-                                            p={4}
-                                            borderRadius="xl"
+                                            p={3}
+                                            borderRadius="lg"
                                             bg="gray.50"
-                                            boxShadow="lg"
-                                            whileHover={{ scale: 1.05, boxShadow: "xl" }}
-                                            whileTap={{ scale: 0.95 }}
+                                            boxShadow="md"
+                                            whileHover={{ scale: 1.07, boxShadow: "xl" }}
+                                            whileTap={{ scale: 0.97 }}
                                             display="flex"
                                             alignItems="center"
                                             justifyContent="center"
@@ -183,7 +181,7 @@ const AboutSkills = () => {
                                             textAlign="center"
                                         >
                                             <Icon size="32px" color={color} />
-                                            <Text mt={2} fontWeight="semibold" color="gray.800">
+                                            <Text mt={2} fontWeight="semibold" color="gray.800" fontSize="sm">
                                                 {name}
                                             </Text>
                                         </MotionBox>
@@ -191,12 +189,8 @@ const AboutSkills = () => {
                                 </Grid>
                             </MotionBox>
                         ))}
-                    </VStack>
+                    </SimpleGrid>
                 </VStack>
-
-
-
-
             </Container>
         </Box >
     );
