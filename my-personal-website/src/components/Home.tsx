@@ -68,11 +68,19 @@ const LoadingScreen: React.FC = () => {
                 transition={{ duration: 0.5 }}
             >
                 <Text fontSize="4xl" fontWeight="bold" color="white" className="limelight-regular">
-                    JL
+                    Jason Ling's Website
                 </Text>
             </motion.div>
 
-            <Box width="200px" height="4px" bg="whiteAlpha.300" borderRadius="full" overflow="hidden" position="relative">
+            <Box 
+                width="400px" 
+                height="8px" 
+                bg="whiteAlpha.300" 
+                borderRadius="full" 
+                overflow="hidden" 
+                position="relative"
+                boxShadow="0 0 20px rgba(255,255,255,0.2)"
+            >
                 <motion.div
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
@@ -82,17 +90,17 @@ const LoadingScreen: React.FC = () => {
                     }}
                     style={{
                         height: "100%",
-                        backgroundColor: "white",
+                        background: "linear-gradient(90deg, #3182CE, #63B3ED, #3182CE)",
                         borderRadius: "full"
                     }}
                 />
                 <motion.div
                     animate={{
-                        x: ["0%", "100%"],
+                        x: ["-100%", "100%"],
                         opacity: [0, 1, 0]
                     }}
                     transition={{
-                        duration: 2,
+                        duration: 1.5,
                         repeat: Infinity,
                         ease: "easeInOut"
                     }}
@@ -100,10 +108,11 @@ const LoadingScreen: React.FC = () => {
                         position: "absolute",
                         top: 0,
                         left: 0,
-                        width: "20%",
+                        width: "30%",
                         height: "100%",
                         background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)",
-                        borderRadius: "full"
+                        borderRadius: "full",
+                        filter: "blur(2px)"
                     }}
                 />
             </Box>
@@ -119,8 +128,8 @@ const LoadingScreen: React.FC = () => {
                     ease: "easeInOut"
                 }}
             >
-                <Text color="whiteAlpha.800" fontSize="sm">
-                    Gimme a second...
+                <Text color="whiteAlpha.800" fontSize="sm" fontWeight="medium">
+                    Loading...
                 </Text>
             </motion.div>
         </motion.div>
