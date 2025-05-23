@@ -101,7 +101,7 @@ const fadeInVariant = {
 };
 
 const categoryDescriptions: Record<string, string> = {
-    frontend: "These are the essential frameworks, libraries, and tools I use to build interactive and user-friendly web interfaces.",
+    frontend: "These are the essential frameworks, libraries, and tools I use to build interactive and user-friendly interfaces.",
     backend: "These tools and technologies power my server-side logic, APIs, and database interactions for scalable applications.",
     languages: "The programming languages I use to develop software solutions across different domains and platforms.",
     tools: "A collection of essential utilities and platforms that streamline my development workflow and improve efficiency.",

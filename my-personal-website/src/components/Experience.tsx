@@ -14,7 +14,7 @@ interface Experience {
     location: string;
     points: string[];
     tags: string[];
-    logo?: string; // Optional logo URL
+    logo?: string; 
 }
 const experiences: Experience[] = [
     {
@@ -251,7 +251,23 @@ const VerticalTimeline = () => {
 
                                 <Stack direction="row" mt={3} spacing={2} wrap="wrap">
                                     {exp.tags.map((tag, i) => (
-                                        <Tag key={i} size="sm" variant="solid" colorScheme="blue">
+                                        <Tag 
+                                            key={i} 
+                                            size="sm" 
+                                            variant="subtle" 
+                                            colorScheme="blue"
+                                            px={3}
+                                            py={1}
+                                            borderRadius="full"
+                                            fontWeight="medium"
+                                            bg="blue.50"
+                                            color="blue.700"
+                                            _hover={{
+                                                bg: "blue.100",
+                                                transform: "translateY(-1px)",
+                                                transition: "all 0.2s"
+                                            }}
+                                        >
                                             {tag}
                                         </Tag>
                                     ))}
